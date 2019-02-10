@@ -4,7 +4,7 @@ function clickFunction() {
   var dest = (document.getElementById('destination').value);
   var carMileage = (document.getElementById('carType').value);
   //console.log(carType);
-  if(document.getElementById("myLocation").checked == true) {
+  if (document.getElementById("myLocation").checked == true) {
     var locationUrl = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyA5A-5qiyE0LJgG7_Ns5U2jZ422hvX4sGg"
     $.ajax({
       url: locationUrl,
@@ -18,7 +18,7 @@ function clickFunction() {
     });
     source = currentLocation;
   }
-  else{
+  else {
     source = (document.getElementById('source').value);
   }
 
@@ -27,8 +27,8 @@ function clickFunction() {
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     var url = proxyurl + apiQuerry + source + '&destinations=' + dest + '&key=AIzaSyA5A-5qiyE0LJgG7_Ns5U2jZ422hvX4sGg';
     var dist;
-  
-    $.ajax( {
+
+    $.ajax({
       url: url,
       type: 'GET',
       async: false,
@@ -40,15 +40,20 @@ function clickFunction() {
         console.log(data);
         console.log(carMileage);
         console.log(dist);
-        //console.log(dist*carMileage);
 
         //Alters placeholder div to contain result
         //Calculates to
-        (document.getElementById("result")).innerHTML = (dist*carMileage/1000).toFixed(2);
+        var res = (dist * carMileage / 1000).toFixed(2);
+        if (res != "NaN") {
+          (document.getElementById("result")).innerHTML = res;
+        }
+        else {
+          alert("Please Select Your Car Model!");
+        }
       }
     });
   } else {
-    console.log("error");
+    alert("Please enter a source and a destination!");
   }
 }
 
@@ -73,7 +78,7 @@ function addCars() {
 }
 
 function useMyLocation() {
-  if(document.getElementById("myLocation").checked == true) {
+  if (document.getElementById("myLocation").checked == true) {
     document.getElementById("sourceDest").innerHTML = "<p></p>";
     //$("#sourceDest").remove();
   }
