@@ -1,26 +1,8 @@
 function clickFunction() {
-  var source;
-  var currentLocation;
+  var source = getsource();
   var dest = (document.getElementById('destination').value);
   var carMileage = (document.getElementById('carType').value);
-  //console.log(carType);
-  if (document.getElementById("myLocation").checked == true) {
-    var locationUrl = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyA5A-5qiyE0LJgG7_Ns5U2jZ422hvX4sGg"
-    $.ajax({
-      url: locationUrl,
-      type: 'POST',
-      async: false,
-      success: function (data) {
-        var lat = data.location.lat;
-        var lng = data.location.lng;
-        currentLocation = lat + ', ' + lng;
-      }
-    });
-    source = currentLocation;
-  }
-  else {
-    source = (document.getElementById('source').value);
-  }
+
 
   if (source.length != 0 && dest.length != 0) {
     var apiQuerry = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=';
@@ -84,5 +66,34 @@ function useMyLocation() {
   }
   else {
     document.getElementById("sourceDest").innerHTML = "<div class=\"col-12 col-md-9 mb-2 mb-md-0\"\><input type=\"text\" name = \"source\" id = \"source\" class=\"form-control form-control-lg\" placeholder=\"Enter your source...\"\></div>";
+  }
+}
+
+function directionsFunc() {
+  var dest = (document.getElementById('destination').value);
+  var source = getsource();
+
+  console.log(dest);
+  console.log(source);
+  document.getElementById("newMap").innerHTML = "<div> <iframe width=600px height=390px frameborder=\"0\" style=\"border:0\"  scrolling=\"auto\" src = \"https://www.google.com/maps/embed/v1/directions?key=AIzaSyA5A-5qiyE0LJgG7_Ns5U2jZ422hvX4sGg&origin=" + source + "&destination=" + dest + "\" allowfullscreen > </iframe ></div> ";
+}
+
+function getsource() {
+  if (document.getElementById("myLocation").checked == true) {
+    var locationUrl = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyA5A-5qiyE0LJgG7_Ns5U2jZ422hvX4sGg"
+    $.ajax({
+      url: locationUrl,
+      type: 'POST',
+      async: false,
+      success: function (data) {
+        var lat = data.location.lat;
+        var lng = data.location.lng;
+        currentLocation = lat + ', ' + lng;
+      }
+    });
+    return currentLocation;
+  }
+  else {
+    return (document.getElementById('source').value);
   }
 }

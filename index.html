@@ -16,7 +16,8 @@
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
+    type="text/css">
 
   <!-- Custom styles for this template -->
   <link href="css/landing-page.min.css" rel="stylesheet">
@@ -42,26 +43,28 @@
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
           <form class="form-horizontal">
             <div class="form-group" align="center">
-              <input type="checkbox" name="myLocation" id ="myLocation" onclick="useMyLocation()"> Use my Location</input>
+              <input type="checkbox" name="myLocation" id="myLocation" onclick="useMyLocation()"> Use my
+              Location</input>
             </div>
-            <div class="form-group" align="center" id = "sourceDest">
+            <div class="form-group" align="center" id="sourceDest">
               <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="text" name = "source" id = "source" class="form-control form-control-lg" placeholder="Enter your source...">
+                <input type="text" name="source" id="source" class="form-control form-control-lg"
+                  placeholder="Enter your source...">
               </div>
             </div>
             <div class="form-group" align="center">
               <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="text" name = "destination" id = "destination" class="form-control form-control-lg" placeholder="Enter your destination...">
+                <input type="text" name="destination" id="destination" class="form-control form-control-lg"
+                  placeholder="Enter your destination...">
               </div>
-
             </div>
 
             <div class="form-group" align="center">
               <div class="col-12 col-md-9 mb-2 mb-md-0">
-              <select name = "car model" id = "carType" class="form-control form-control-lg">
-              <option selected="selected">Select Your Vehicle Model</option>
-              </select>
-              <script>addCars();</script>
+                <select name="car model" id="carType" class="form-control form-control-lg">
+                  <option selected="selected">Select Your Vehicle Model</option>
+                </select>
+                <script>addCars();</script>
               </div>
             </div>
 
@@ -71,13 +74,18 @@
             <!--Placeholder div to store result-->
             <div class="form-group" align="center">
               <br>
-              <h3>You'll produce <span id ="result">_______</span> Kg of CO2!</h3>
+              <h3>You'll produce <span id="result">_______</span> Kg of CO2!</h3>
             </div>
           </form>
         </div>
       </div>
     </div>
+
+    <div id="newMap">
+      <button onclick="directionsFunc()" type="button" class="btn btn-lg btn-primary">Show Map</button>
+    </div>
   </header>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
