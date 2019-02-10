@@ -1,15 +1,10 @@
 function clickFunction() {
-  var source = (document.getElementById('source').value);
+  var source;
+  var currentLocation;
   var dest = (document.getElementById('destination').value);
   var carMileage = (document.getElementById('carType').value);
   //console.log(carType);
-  if (source.length != 0 && dest.length != 0) {
-    var apiQuerry = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=';
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    var url = proxyurl + apiQuerry + source + '&destinations=' + dest + '&key=AIzaSyA5A-5qiyE0LJgG7_Ns5U2jZ422hvX4sGg';
-    var dist;
-    var currentLocation;
-
+  if(document.getElementById("myLocation").checked == true) {
     var locationUrl = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyA5A-5qiyE0LJgG7_Ns5U2jZ422hvX4sGg"
     $.ajax({
       url: locationUrl,
@@ -21,10 +16,22 @@ function clickFunction() {
         currentLocation = lat + ', ' + lng;
       }
     });
+    source = currentLocation;
+  }
+  else{
+    source = (document.getElementById('source').value);
+  }
 
+  if (source.length != 0 && dest.length != 0) {
+    var apiQuerry = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=';
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    var url = proxyurl + apiQuerry + source + '&destinations=' + dest + '&key=AIzaSyA5A-5qiyE0LJgG7_Ns5U2jZ422hvX4sGg';
+    var dist;
+  
     $.ajax( {
       url: url,
       type: 'GET',
+      async: false,
       success: function (data) {
         if (data.rows.length == 1) {
           dist = parseFloat(data.rows[0].elements[0].distance.text.replace(/,/g, ''));
