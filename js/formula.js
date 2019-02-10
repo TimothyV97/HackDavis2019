@@ -36,7 +36,7 @@ function clickFunction() {
         //console.log(dist*carMileage);
 
         //Alters placeholder div to contain result
-        //Calculates to 
+        //Calculates to
         (document.getElementById("result")).innerHTML = (dist*carMileage/1000).toFixed(2);
       }
     });
@@ -58,5 +58,15 @@ function addCars() {
   var select = document.getElementById("carType");
   for(index in myobject) {
       select.options[select.options.length] = new Option(index, myobject[index]);
+  }
+}
+
+function useMyLocation() {
+  if(document.getElementById("myLocation").checked == true) {
+    document.getElementById("sourceDest").innerHTML = "<p></p>";
+    //$("#sourceDest").remove();
+  }
+  else {
+    document.getElementById("sourceDest").innerHTML = "<div class=\"col-12 col-md-9 mb-2 mb-md-0\"\><input type=\"text\" name = \"source\" id = \"source\" class=\"form-control form-control-lg\" placeholder=\"Enter your source...\"\></div>";
   }
 }
