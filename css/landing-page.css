@@ -26,6 +26,9 @@ header.masthead {
   padding-top: 8rem;
   padding-bottom: 8rem;
 }
+.black-font{
+  font:black;
+}
 
 header.masthead .overlay {
   position: absolute;
