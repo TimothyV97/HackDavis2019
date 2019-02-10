@@ -53,19 +53,23 @@ function clickFunction() {
 }
 
 function addCars() {
-  // emissions in g/km
-  var myobject = {
-      'Peugeot iOn' : 88,
-      'Volkswagen Polo' : 99,
-      'Vauxhall Ampera' : 102,
-      'Smart ForTwo' : 105,
-      'Nissan Leaf' : 106,
-      'Volkswagen Golf' :108
+  var config = {
+    apiKey: "AIzaSyCO31FM4nMGgRrF8oNlLdMwG9EGoL1Qqyw",
+    authDomain: "hackdavis2019-1549747004882.firebaseapp.com",
+    databaseURL: "https://hackdavis2019-1549747004882.firebaseio.com",
+    projectId: "hackdavis2019-1549747004882",
+    storageBucket: "hackdavis2019-1549747004882.appspot.com",
+    messagingSenderId: "690575260659"
   };
-  var select = document.getElementById("carType");
-  for(index in myobject) {
-      select.options[select.options.length] = new Option(index, myobject[index]);
-  }
+  firebase.initializeApp(config);
+  var rootRef = firebase.database().ref();
+  rootRef.on('child_added', function (snapshot) {
+    var newPost = snapshot.val();
+    var select = document.getElementById("carType");
+    for (p in newPost) {
+      select.options[select.options.length] = new Option(p, newPost[p]);
+    }
+  });
 }
 
 function useMyLocation() {
