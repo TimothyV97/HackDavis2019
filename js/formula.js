@@ -2,6 +2,7 @@ function clickFunction() {
   var source = (document.getElementById('source').value);
   var dest = (document.getElementById('destination').value);
   var car  = (document.getElementById('carType').value);
+  console.log(car);
   var carMap = new Map();
 
   var apiQuerry = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=';
@@ -18,4 +19,19 @@ function clickFunction() {
     }
   });
 
+}
+
+function addCars() {
+  var myobject = {
+      ValueA : 'Text A',
+      ValueB : 'Text B',
+      ValueC : 'Text C',
+      ValueD : 'Text D',
+      ValueE : 'Text E',
+      ValueF : 'Text F'
+  };
+  var select = document.getElementById("carType");
+  for(index in myobject) {
+      select.options[select.options.length] = new Option(index, myobject[index]);
+  }
 }
