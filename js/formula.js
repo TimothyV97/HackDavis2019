@@ -29,12 +29,7 @@ function clickFunction() {
         if (data.rows.length == 1) {
           dist = parseFloat(data.rows[0].elements[0].distance.text.replace(/,/g, ''));
         }
-        //console.log(dist)
-        console.log(data);
-        console.log(carMileage);
-        console.log(dist);
-        //console.log(dist*carMileage);
-
+   
         //Alters placeholder div to contain result
         //Calculates to 
         (document.getElementById("result")).innerHTML = (dist*carMileage/1000).toFixed(2);
