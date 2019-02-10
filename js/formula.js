@@ -1,7 +1,8 @@
 function clickFunction() {
   var source = (document.getElementById('source').value);
   var dest = (document.getElementById('destination').value);
-
+  var carType = (document.getElementById('carType').value);
+  //console.log(carType);
   if (source.length != 0 && dest.length != 0) {
     var apiQuerry = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=';
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
@@ -10,9 +11,11 @@ function clickFunction() {
     var dist;
     $.getJSON(url, function (data) {
       if (data.rows.length == 1) {
-        dist = (data.rows[0].elements[0].distance.text);
+        dist = parseFloat(data.rows[0].elements[0].distance.text);
       }
-      console.log(dist);
+      //console.log(data.rows[0].elements[0].distance.text);
+      
+      console.log(dist * carType);
     });
   }else {
     console.log("error");
@@ -20,13 +23,14 @@ function clickFunction() {
 }
 
 function addCars() {
+  // emissions in g/km
   var myobject = {
-      ValueA : 'Text A',
-      ValueB : 'Text B',
-      ValueC : 'Text C',
-      ValueD : 'Text D',
-      ValueE : 'Text E',
-      ValueF : 'Text F'
+      'Peugeot iOn' : 88,
+      'Volkswagen Polo' : 99,
+      'Vauxhall Ampera' : 102,
+      'Smart ForTwo' : 105,
+      'Nissan Leaf' : 106,
+      'Volkswagen Golf' :108
   };
   var select = document.getElementById("carType");
   for(index in myobject) {
