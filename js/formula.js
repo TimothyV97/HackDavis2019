@@ -7,8 +7,21 @@ function clickFunction() {
     var apiQuerry = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=';
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     var url = proxyurl + apiQuerry + source + '&destinations=' + dest + '&key=AIzaSyA5A-5qiyE0LJgG7_Ns5U2jZ422hvX4sGg';
-
     var dist;
+    var currentLocation;
+
+    var locationUrl = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyA5A-5qiyE0LJgG7_Ns5U2jZ422hvX4sGg"
+    $.ajax({
+      url: locationUrl,
+      type: 'POST',
+      async: false,
+      success: function (data) {
+        var lat = data.location.lat;
+        var lng = data.location.lng;
+        currentLocation = lat + ', ' + lng;
+      }
+    });
+
     $.ajax( {
       url: url,
       type: 'GET',
