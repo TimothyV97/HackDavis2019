@@ -75,7 +75,7 @@ function directionsFunc() {
 
   console.log(dest);
   console.log(source);
-  document.getElementById("newMap").innerHTML = "<div><iframe width=600px height=390px frameborder=\"0\" style=\"border:0\"  scrolling=\"auto\" src = \"https://www.google.com/maps/embed/v1/directions?key=AIzaSyA5A-5qiyE0LJgG7_Ns5U2jZ422hvX4sGg&origin=" + source + "&destination=" + dest + "&mode=transit\" allowfullscreen > </iframe ></div> ";
+  document.getElementById("newMap").innerHTML = "<div><iframe width=100% height=100% frameborder=\"0\" style=\"border:0\"  scrolling=\"auto\" src = \"https://www.google.com/maps/embed/v1/directions?key=AIzaSyA5A-5qiyE0LJgG7_Ns5U2jZ422hvX4sGg&origin=" + source + "&destination=" + dest + "&mode=transit\" allowfullscreen > </iframe ></div> ";
 }
 
 function getsource() {
